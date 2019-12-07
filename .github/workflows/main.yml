@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install cpanm
+      run: cpan App::cpanminus
+    - name: Install perl modules
+      run: |
+        cpanm Test::MockModule
+        cpanm Test::MockObject
+    - name: Run tests
+      run: prove -lrv
