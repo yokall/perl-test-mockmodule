@@ -26,7 +26,7 @@ subtest 'add with mock object' => sub {
 	my $mock = Test::MockModule->new('TestMock::ModuleB')->redefine(add => sub { return 30; });
 
 	subtest 'add with mock' => sub {
-		my $result = TestMock::ModuleA::add($number1, $number2);
+		$result = TestMock::ModuleA::add($number1, $number2);
 
 		is($result, 30, '1 + 1 = 30');
 	};
@@ -34,7 +34,7 @@ subtest 'add with mock object' => sub {
 	# falling back to original fake
 	$mock->unmock('add');
 
-	my $result = TestMock::ModuleA::add($number1, $number2);
+	$result = TestMock::ModuleA::add($number1, $number2);
 
 	is($result, 3, '1 + 1 = 3');
 };
@@ -55,7 +55,7 @@ subtest 'add with redefined mock object' => sub {
 	my $mock = Test::MockModule->new('TestMock::ModuleB')->redefine(add => sub { return 30; });
 
 	subtest 'add with mock' => sub {
-		my $result = TestMock::ModuleA::add($number1, $number2);
+		$result = TestMock::ModuleA::add($number1, $number2);
 
 		is($result, 30, '1 + 1 = 30');
 	};
@@ -63,7 +63,7 @@ subtest 'add with redefined mock object' => sub {
 	# falling back to original fake
 	$mock->unmock('add');
 
-	my $result = TestMock::ModuleA::add($number1, $number2);
+	$result = TestMock::ModuleA::add($number1, $number2);
 
 	is($result, 50, '1 + 1 = 50');
 };
@@ -85,7 +85,7 @@ subtest 'add with new mock object' => sub {
 	my $mock = Test::MockModule->new('TestMock::ModuleB')->redefine(add => sub { return 30; });
 
 	subtest 'add with mock' => sub {
-		my $result = TestMock::ModuleA::add($number1, $number2);
+		$result = TestMock::ModuleA::add($number1, $number2);
 
 		is($result, 30, '1 + 1 = 30');
 	};
@@ -93,7 +93,7 @@ subtest 'add with new mock object' => sub {
 	# falling back to original fake
 	$mock->unmock('add');
 
-	my $result = TestMock::ModuleA::add($number1, $number2);
+	$result = TestMock::ModuleA::add($number1, $number2);
 
 	is($result, 45, '1 + 1 = 45');
 
@@ -108,7 +108,7 @@ subtest 'add with new mock object' => sub {
 		my $mock = Test::MockModule->new('TestMock::ModuleB')->redefine(add => sub { return 30; });
 
 		subtest 'add with mock' => sub {
-			my $result = TestMock::ModuleA::add($number1, $number2);
+			$result = TestMock::ModuleA::add($number1, $number2);
 
 			is($result, 30, '1 + 1 = 30');
 		};
@@ -116,7 +116,7 @@ subtest 'add with new mock object' => sub {
 		# falling back to original fake
 		$mock->unmock('add');
 
-		my $result = TestMock::ModuleA::add($number1, $number2);
+		$result = TestMock::ModuleA::add($number1, $number2);
 
 		is($result, 45, '1 + 1 = 45');
 	};

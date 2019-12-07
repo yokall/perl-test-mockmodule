@@ -21,7 +21,7 @@ subtest 'add with mock' => sub {
 	subtest 'add with diff mock' => sub {
 		$mock = Test::MockModule->new('TestMock::ModuleB')->redefine(add => sub { return 30; });
 
-		my $result = TestMock::ModuleA::add($number1, $number2);
+		$result = TestMock::ModuleA::add($number1, $number2);
 
 		is($result, 30, '1 + 1 = 30');
 	};
@@ -29,7 +29,7 @@ subtest 'add with mock' => sub {
 	# falling back to original
 	$mock->unmock('add');
 
-	my $result = TestMock::ModuleA::add($number1, $number2);
+	$result = TestMock::ModuleA::add($number1, $number2);
 
 	is($result, 2, '1 + 1 = 2');
 };
